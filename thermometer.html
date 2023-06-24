@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Thermometer</title>
+        <link rel="stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body style="background-color: rgb(21, 21, 117)">
+        <div class = "main_div">
+            <div class = "heading">
+                <h3 style = "color: white; font-family:Arial, Helvetica, sans-serif; font-weight: lighter;">I am <br>Thermometer <span id = "temp" class = "fa"></span></h3>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        let temp = document.querySelector ("#temp");               
+        temp.innerHTML= "&#xf2cb";
+        temp.style.color = "white";
+
+        const tempLoad = () => {
+            let temp = document.querySelector ("#temp");
+            
+                
+                temp.innerHTML= "&#xf2cb";
+                temp.style.color = "white";
+                setTimeout (()=>{
+                    temp.innerHTML= "&#xf2ca";
+                    temp.style.color = "yellow";
+                }, 1000);
+
+                setTimeout (()=>{
+                    temp.innerHTML= "&#xf2c9";
+                    temp.style.color = "yellow";
+                }, 2000);
+
+                setTimeout (()=>{
+                    temp.innerHTML= "&#xf2c7";
+                    temp.style.color = "red";
+                }, 3000);
+            
+            
+        }
+        tempLoad ();
+        setInterval (tempLoad, 4000);
+        
+
+    </script>
+</html>

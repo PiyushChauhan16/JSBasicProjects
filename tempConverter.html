@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+        <title>
+            Temperature Converter
+        </title>
+        <style>
+            .card{
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+                /* margin: 100px;
+                margin-top: 200px; */
+                justify-content: center;
+                margin-top: 200px;;
+            }
+            .main_div{
+                display: inline-block;
+                background-color: rgb(221, 220, 215);
+                padding: 30px;
+                border-radius: 20px;
+                
+                
+            }
+            #temp{
+                width: 100px;
+            }
+            .data{
+                margin-top: 40px;
+            }
+            .submitBt{
+                margin-top: 30px;
+            }
+            .bt{
+                background-color: black;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                border-radius: 10px;
+                transition: opacity 0.15s;
+            }
+            .bt:hover{
+                opacity: 0.7;
+            }
+
+            .presult{
+                display: inline-block;
+            }
+
+        </style>
+    </head>
+    <body style="background-color: rgb(25, 25, 100);">
+        <div class= "card">
+            <div class = "main_div">
+                <div class = "heading">
+                    <h3 style = "font-family: Arial, Helvetica, sans-serif; font-weight: 100px; font-size: 35px;"> Temperature Converter</h3>
+                </div>
+                <div class = "data">
+                    <label for = "temp" class = "detail">Enter the temperature: </label>
+                    <input type = "number" id = "temp" name = "temp">
+
+                </div>
+                <div style = "margin-top: 10px;">
+                    <label for = "type" class = "detail">Enter the type (C/F):</label>
+                    <select id = "type" name = "temp_type">
+                        <option value = "celsius">Celsius</option>
+                        <option value = "farenheit">Farenheit</option>
+                    </select>
+                    
+                </div>
+                <div class= "submitBt">
+                    <button class = "bt" onclick = "result ()">Submit</button>
+    
+                </div>
+                <div class = "result">
+                    <p class = "presult"></p>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    <script>
+        let flag = 0;
+
+        function result(){
+            const temp_ref = document.querySelector ("#temp");
+            const temp_data = temp_ref.value;
+            const temp_type = document.querySelector ("#type").value;
+            const p_ref = document.querySelector (".presult");
+            const result_ref = document.querySelector (".result");
+            const design = "border-style: solid; margin-top:20px; display:inline-block; padding-left:5px; padding-right:5px";
+
+            result_ref.style = design;
+
+            console.log (flag);
+            if  (flag == 0) flag = 1;
+            else result_ref.removeChild (result_ref.firstElementChild);
+
+            const htmlData = '<p style = "display: inline-block;"> <strong>Result:</strong></p>';
+            result_ref.insertAdjacentHTML ("afterbegin", htmlData);
+
+            if (temp_type == "celsius"){
+                
+                let val = (temp_data * 1.8)+32;
+                p_ref.innerHTML = val + " Fareheit";
+            }
+            else{
+                let val = (temp_data-32)/1.8;
+                p_ref.innerHTML = val+" Celsius";
+            }
+        }
+        
+    </script>
+ </html>

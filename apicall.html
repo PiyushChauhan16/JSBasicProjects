@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <style>
+
+        .about{
+            border-style: solid;
+            display: inline-block;
+            border-radius: 40px;
+            background-color: white;
+            margin: 200px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        .population{
+            display: inline-block;
+        }
+        .pop1,.pop2{
+            
+            text-align: center;
+        }
+        .pop1{
+            margin-bottom: 1px;
+            font-weight: bold;
+        }
+        .pop2{
+            margin-top: 0px;
+            color: grey;
+        }
+        .flag{
+            height: 200px;
+            
+            padding-left: 100px;
+         
+            text-align: center;
+        }
+        .pcapital,.pname{
+            text-align: center;
+            
+            
+        }
+        .pcapital{
+            margin-top: 0px;
+            color: grey;
+            margin-bottom: 25 px;
+        }
+        .pname{
+            margin-bottom: 0px;
+        }
+        .line{
+            border-width: 2px;
+            border-style: solid;
+            border-color: grey;
+        }
+        
+        </style>
+
+    </head>
+
+    <body style="background-color: rgba(27, 25, 25, 0.937);">
+        <div class = "main_div"></div>
+        
+        
+
+    </body>
+
+    <script>
+        const container = document.querySelector (".main_div");
+
+        const request = new XMLHttpRequest ();
+        request.open ('GET', "https://restcountries.com/v3.1/name/nepal");
+        request.send ();
+
+        request.addEventListener ("load", function (){
+            const [data] = JSON.parse (this.responseText);
+            console.log (data);
+            const htmlData= `<div class = "about">
+            <div>
+                <img class = "flag" src = "${data.flags.png}" alt= "${data.flags.alt}">
+            </div>
+            <div class = "name">
+                <p class= "pname"> <strong>${data.name.common}</strong> </p>
+            </div>
+            <div class = "capital">
+                <p class = "pcapital">capital : ${data.capital[0]}</p>
+            </div>
+           
+            <div class = "line">
+            </div>
+            
+            <div style = "display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 5px; row-gap: 10px;">
+                <div class = "population">
+                    <div>
+                        <p class = "pop1">${data.languages.nep}</p>
+                    </div>
+                    <div>
+                        <p class = "pop2">Native Language</p>
+                    </div>
+                </div>
+
+                <div class = "population">
+                    <div>
+                        <p class = "pop1">${data.population}</p>
+                    </div>
+                    <div>
+                        <p class = "pop2">Population</p>
+                    </div>
+                </div>
+
+                <div class = "population">
+                    <div>
+                        <p class = "pop1">${data.population}</p>
+                    </div>
+                    <div>
+                        <p class = "pop2">Population</p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>`;
+        
+        container.insertAdjacentHTML ("afterbegin", htmlData);
+
+        })
+
+
+    </script>
+</html>

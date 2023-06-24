@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dad Jokes</title>
+        <style>
+            .main_div{
+                display:inline-block;
+                background-color: white;
+                padding: 15px;
+                border-radius: 10px;
+                margin: 30px;
+                width: 500px;
+                box-shadow: 10px;
+            }
+            .joke{
+                text-align: center;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-style: italic;
+                margin-bottom: 50px;
+
+            }
+            .jokeBt{
+                background-color: rgb(208, 208, 16);
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border: none;
+                border-radius: 10px;
+                /* margin-left: 30px; */
+                /* text-align: center; */
+                /* display: inline-block; */
+                cursor: pointer;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 14px;
+                padding-left: 20px;
+                padding-right: 20px;
+                font-weight: bold;
+                transition: background-color 0.8s, padding-top 0.2s,
+                 padding-bottom 0.2s, padding-left 0.2s, padding-right 0.2s;
+            }
+            .jokeBt:hover{
+                opacity: 0.8;
+                background-color: orange;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+
+        </style>
+    </head>
+    <body style = "background-color: rgba(23, 23, 145, 0.947);">
+        <div style="text-align: center;margin-top: 200px;">
+            <div class = "main_div">
+            <div class = "heading">
+                <h3 style="color:grey; font-family:Georgia, 'Times New Roman', Times, serif; font-size: 15px; text-align: center;">Best Jokes To Make Your Day</h3>
+            </div>
+            <div class = "joke">
+               
+            </div>
+            <div style="text-align: center;">
+                <button class ="jokeBt">Next Joke</buttonn>
+            </div>
+        </div>
+        </div>
+        
+    </body>
+
+    <script>
+        const ref = document.querySelector (".jokeBt");
+        const ref2 = document.querySelector (".joke");
+        console.log ("in");
+        const helper = () => {
+            
+            const setHeader = {
+                headers: {
+                    Accept : "application/json"
+                }
+            }
+
+            fetch ("https://icanhazdadjoke.com", setHeader)
+            .then((res) => res.json())
+            .then ((data)=>{
+                ref2.innerHTML = data.joke;
+            }).catch ((res)=>console.log (res));
+        }
+        
+
+        ref.addEventListener ('click', helper);
+        helper ();
+
+    </script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .main-div{
+                display: inline-block;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 100px;
+                
+            }
+            #box{
+                height: 50px;
+                width: 50px;
+                background-color: white;
+                
+              
+                
+                
+            }
+            
+
+            
+        </style>
+    </head>
+
+    <body style = "background-color: rgb(14, 14, 132);">
+        <div class = "main-div">
+            <div id = "box">
+                
+            </div>
+            
+        </div>
+
+        <script>
+            const eve = document.getElementById ("box");
+            const helper = () =>{
+                eve.style.backgroundColor = "red";
+            }
+            eve.addEventListener ('mouseenter',helper);
+            eve.addEventListener ('mouseleave', () => eve.style.backgroundColor = "green");
+        </script>
+    </body>
+</html>

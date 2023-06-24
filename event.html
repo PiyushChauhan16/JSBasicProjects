@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> 
+            events in js
+        </title>
+        <style>
+            .major{
+                /* display: inline; */
+                padding-left: 40%;
+                border-color: red;
+                border-radius: 10px;
+                border-width: 10px;
+            }
+            
+            .para_style, .button_Style{
+                font-size: 25px;
+                font-style: roboto;
+                color: white;
+                font-weight: bold;
+            }
+
+            .button_style{
+                width: 130px;
+                margin-bottom: 50px;
+                padding:20px;
+                cursor: pointer;
+                border-radius: 10px;
+                background-color: rgb(235, 197, 6);
+            }
+            .button_style:hover{
+                opacity: 0.7;
+            }
+            .event_types{
+                padding-left: 75px;
+            }
+            .div_1{
+                border-width: 10px;
+                border-color: white;
+            }
+
+        </style>
+    </head>
+    
+    <body style = "background-color: rgb(15, 26, 147);">
+        <div class = "major">
+            <div class = "div_1">
+                <p class = "para_style"> Different types of Events in JS</p>
+            </div>
+            
+            <div class = "event_types">
+                <button class = "button_style" onclick= "alert ('This is inline alert function')"> alert function</button>
+
+            </div>
+
+            <div class = "event_types">
+                <button class = "button_style" onclick="helper ()"> By calling a function </button>
+
+            </div>
+
+            <div class = "event_types">
+                <button class = "button_style" id = "third"> Inline Event</button>
+
+            </div>
+
+            <div class = "event_types">
+                <button class = "button_style" id = "forth"> Event Listeners</button>
+
+            </div>
+        </div>
+
+        <script>
+            const helper = () => {
+                alert ('Hi! this is second way');
+            }
+
+            const third_way = document.getElementById ('third');
+            third_way.onclick = function (){
+                alert ('Hi! this is third way');
+            } 
+            
+            const forth_way = document.querySelector('#forth');
+            forth_way.addEventListener ('click', ()=>{
+                alert ('Hi! this is forth way');
+            })
+
+
+        </script>
+    </body>
+</html>
